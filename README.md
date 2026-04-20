@@ -4,11 +4,6 @@ A simple and interactive **React-based Attendance Tracker** that allows users to
 
 ---
 
-## 🚀 Live Demo
-
-🔗 *Add your deployed link here (Vercel / Netlify)*
-
----
 
 ## 📌 Features
 
