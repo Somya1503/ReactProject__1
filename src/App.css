@@ -1,38 +1,152 @@
-.App {
-  text-align: center;
+/* AttendanceTracker.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg-main: #ffffff;
+  --bg-subtle: #fafafa;
+  --border-color: #eaeaea;
+  --text-main: #171717; /* High contrast but not pitch black */
+  --text-muted: #666666;
+  --accent-primary: #0070f3; /* Clean "Link" blue */
+  --success: #10b981;
+  --error: #ef4444;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-subtle);
+  color: var(--text-main);
+  line-height: 1.5;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  max-width: 850px;
+  margin: 80px auto;
+  padding: 0 24px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+/* Controls - Minimalist layout */
+.controls {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.App-link {
-  color: #61dafb;
+.button-group {
+  display: flex;
+  gap: 4px;
+  background: #eeeeee;
+  padding: 3px;
+  border-radius: 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button-group button {
+  background: transparent;
+  border: none;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.1s ease;
 }
+
+.button-group button.active {
+  background: white;
+  color: var(--text-main);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Checkbox - Clean and aligned */
+.checkbox-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* Table - The "Spreadsheet" look */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th {
+  background: var(--bg-subtle);
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-color);
+}
+
+td {
+  padding: 14px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Subtle interactions */
+tr.student-row {
+  cursor: pointer;
+}
+
+tr.student-row:hover td {
+  background-color: #fcfcfc;
+}
+
+tr.selected td {
+  background-color: #f5f9ff !important;
+}
+
+/* Specific formatting */
+.name-cell {
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.attendance-val {
+  font-variant-numeric: tabular-nums; /* Keeps numbers aligned */
+  font-weight: 500;
+}
+
+/* Dot Indicator instead of big badges */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.dot.present { background-color: var(--success); }
+.dot.absent { background-color: var(--error); }
